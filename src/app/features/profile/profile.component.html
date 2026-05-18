@@ -1,0 +1,84 @@
+<div class="profile-wrapper container">
+  <aside class="profile-sidebar">
+    <div class="glass-card user-main-card">
+      <div class="avatar-wrapper">
+        <div class="avatar-main">
+          {{ user()?.fullName?.charAt(0) | uppercase }}
+        </div>
+        <div class="online-status"></div>
+      </div>
+      
+      <h2 class="user-display-name">{{ user()?.fullName }}</h2>
+      <span class="user-role-badge">Aktif Öğrenci</span>
+
+      <div class="user-quick-info">
+        <div class="info-row">
+          <i class="fas fa-fingerprint"></i>
+          <span>{{ user()?.studentNumber }}</span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-envelope"></i>
+          <span>{{ user()?.email }}</span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Bilgisayar Mühendisliği</span>
+        </div>
+      </div>
+
+      <button class="btn-logout-danger" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Oturumu Kapat
+      </button>
+    </div>
+  </aside>
+
+  <main class="profile-main-content">
+    <div class="section-header">
+      <h3 class="section-title">
+        <i class="fas fa-users-cog"></i> Üye Olduğum Kulüpler
+      </h3>
+      <span class="count-badge">{{ myMemberships.length }} Kulüp</span>
+    </div>
+
+    <div class="memberships-grid" *ngIf="myMemberships.length > 0; else noClubs">
+      <div class="glass-card club-item-card" *ngFor="let club of myMemberships">
+        <div class="club-item-icon">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        
+        <div class="club-item-info">
+          <h4>{{ club.clubName || club.ClubName || club.name }}</h4>
+          <div class="role-pill" [ngClass]="{'president': club.isAdmin || club.IsAdmin}">
+            <i class="fas" [ngClass]="(club.isAdmin || club.IsAdmin) ? 'fa-crown' : 'fa-user-check'"></i>
+            {{ (club.isAdmin || club.IsAdmin) ? 'Kulüp Yöneticisi' : 'Aktif Üye' }}
+          </div>
+        </div>
+
+        <div class="club-item-action">
+          <a *ngIf="!(club.isAdmin || club.IsAdmin)" 
+             [routerLink]="['/clubs', club.clubId || club.ClubId || club.id]" 
+             class="btn-arrow" title="Kulübe Git">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+
+          <a *ngIf="club.isAdmin || club.IsAdmin" 
+             [routerLink]="['/admin/club', club.clubId || club.ClubId || club.id]" 
+             class="btn-admin-arrow" title="Admin Paneli">
+            <i class="fas fa-cog"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noClubs>
+      <div class="glass-card empty-state-card">
+        <div class="empty-icon-circle">
+          <i class="fas fa-search-plus"></i>
+        </div>
+        <h4>Henüz Hiçbir Kulübe Üye Değilsin</h4>
+        <p>Kampüs hayatına renk katmak için kulüpleri keşfetmeye ne dersin?</p>
+        <button routerLink="/clubs" class="btn-explore-now">Kulüpleri Keşfet</button>
+      </div>
+    </ng-template>
+  </main>
+</div>

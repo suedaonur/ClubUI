@@ -1,0 +1,35 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="card-header">
+      <div class="icon-circle"><i class="fas fa-lock"></i></div>
+      <h2>Öğrenci Girişi</h2>
+      <p>Kampüs dünyasına adım atın</p>
+    </div>
+
+    <div class="form-container">
+      <div class="input-box">
+        <label>Öğrenci Numarası</label>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" [(ngModel)]="loginData.studentNumber" placeholder="230260...">
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label>Şifre</label>
+        <div class="input-field">
+          <i class="fas fa-key"></i>
+          <input type="password" [(ngModel)]="loginData.password" placeholder="••••••••">
+        </div>
+      </div>
+
+      <button class="btn-main" (click)="onLogin()">Giriş Yap</button>
+      
+      <div class="or-separator"><span>veya</span></div>
+      
+      <button class="btn-sub" (click)="goToObsSystem()">
+        <i class="fas fa-shield-alt"></i> OBS İle Kaydol
+      </button>
+    </div>
+  </div>
+</div>

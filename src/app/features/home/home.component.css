@@ -1,0 +1,41 @@
+.home-container { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+}
+
+.welcome-banner {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 40px; margin-bottom: 40px; border-left: 6px solid #2563eb;
+}
+
+.banner-content h1 { color: #1e293b; font-size: 2rem; margin-bottom: 10px; }
+.highlight-text { color: #2563eb; font-weight: 800; }
+.banner-illustration { font-size: 5rem; color: #bfdbfe; opacity: 0.5; }
+
+.feed-header { margin-bottom: 20px; }
+.feed-title { color: #1e293b; display: flex; align-items: center; gap: 10px; }
+
+.feed-list { display: flex; flex-direction: column; gap: 20px; }
+.post-card { padding: 25px; transition: transform 0.2s; }
+.post-card:hover { transform: translateY(-3px); }
+
+.post-header { display: flex; align-items: center; margin-bottom: 15px; }
+.club-avatar { width: 45px; height: 45px; background: #eff6ff; color: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 12px; }
+.post-meta h4 { margin: 0; color: #1e293b; }
+.post-date { color: #94a3b8; font-size: 0.8rem; }
+
+.post-body { margin-bottom: 15px; }
+.post-title { color: #0f172a; margin-bottom: 8px; }
+.post-text { color: #475569; line-height: 1.6; white-space: pre-wrap; }
+
+.post-footer { display: flex; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.btn-action { background: none; border: none; color: #64748b; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 8px 16px; border-radius: 8px; transition: all 0.2s ease-in-out; }
+.btn-action:first-child:hover { background: #eff6ff; color: #2563eb; }
+.btn-action:last-child:hover { background: #f8fafc; color: #0f172a; }
+
+.status-box { text-align: center; padding: 40px; color: #2563eb; }

@@ -1,0 +1,124 @@
+<div class="detail-container">
+  <div *ngIf="isLoading" class="loader">
+    <i class="fas fa-spinner fa-spin"></i> Bilgiler hazırlanıyor...
+  </div>
+
+  <div *ngIf="!isLoading && club" class="club-hero">
+    <div class="hero-content">
+      <div class="club-avatar">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="hero-text">
+        <span class="category-tag">Üniversite Kulübü</span>
+        <h1>{{ club.name }}</h1>
+        <div class="quick-stats">
+          <span><i class="fas fa-user-check"></i> {{ club.members.length }} Aktif Üye</span>
+          <span><i class="fas fa-map-marker-alt"></i> Merkez Kampüs</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <!-- Zaten Üye İse -->
+        <span class="already-member-badge" *ngIf="isMember">
+          <i class="fas fa-check-circle"></i> Zaten Üyesiniz
+        </span>
+
+        <!-- Üye Değil İse -->
+        <button class="btn-join" *ngIf="!isMember" (click)="onJoin()" [disabled]="isJoining">
+          <i class="fas" [ngClass]="isJoining ? 'fa-spinner fa-spin' : 'fa-user-plus'"></i>
+          {{ isJoining ? 'İşleniyor...' : 'Kulübe Katıl' }}
+        </button>
+      </div>
+    </div>
+    
+  </div>
+
+  <div *ngIf="!isLoading && club" class="detail-body">
+    <div class="main-content">
+      <section class="about-section">
+        <h3><i class="fas fa-info-circle"></i> Kulüp Hakkında</h3>
+        <p>{{ club.description || 'Bu kulüp henüz bir açıklama eklememiş.' }}</p>
+      </section>
+
+      <!-- Facebook Tarzı Gönderi Paylaşma Kutusu -->
+      <section class="post-creator-section" *ngIf="hasPostPermission">
+        <h3><i class="fas fa-edit"></i> Kulüp Panosunda Paylaş</h3>
+        <div class="post-creator-card">
+          <div class="form-group">
+            <input type="text" [(ngModel)]="newPost.title" class="form-control title-input" placeholder="Gönderi Başlığı yazın...">
+          </div>
+          <div class="form-group">
+            <textarea [(ngModel)]="newPost.content" class="form-control text-area content-textarea" rows="3" placeholder="Bugün toplulukla ne paylaşmak istersiniz?"></textarea>
+          </div>
+          <div class="creator-footer">
+            <button class="btn-share-facebook" (click)="onSubmitPost()" [disabled]="isSubmittingPost">
+              <i class="fas" [ngClass]="isSubmittingPost ? 'fa-spinner fa-spin' : 'fa-paper-plane'"></i>
+              {{ isSubmittingPost ? 'Paylaşılıyor...' : 'Paylaş' }}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="placeholder-section">
+        <h3><i class="fas fa-bullhorn"></i> Kulüp Gönderileri</h3>
+        
+        <div *ngIf="!club.posts || club.posts.length === 0" class="empty-notice">
+          <i class="fas fa-comment-slash"></i> Henüz bu kulüpte hiçbir gönderi yayınlanmamış.
+        </div>
+
+        <div class="posts-timeline" *ngIf="club.posts && club.posts.length > 0">
+          <div class="post-item-card" *ngFor="let post of club.posts">
+            <div class="post-item-header">
+              <div class="post-avatar">
+                <i class="fas fa-bullhorn"></i>
+              </div>
+              <div class="post-meta">
+                <h4 class="post-title">{{ post.title }}</h4>
+                <span class="post-date-tag">{{ post.createdDate | date:'dd.MM.yyyy HH:mm' }}</span>
+              </div>
+              
+              <!-- Gönderi Sil Butonu (Yalnızca Admin/Başkan görebilir) -->
+              <button class="btn-delete-post" *ngIf="isAdminUser" (click)="onDeletePost(post.id)" title="Gönderiyi Sil">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+            <div class="post-item-content">
+              <p>{{ post.content }}</p>
+            </div>
+            <!-- Facebook Tarzı Sosyal Etkileşim Butonları -->
+            <div class="post-item-actions">
+              <button class="btn-post-action btn-like" (click)="onLikePost(post.id)">
+                <i class="far fa-thumbs-up"></i> Beğen ({{ post.voteScore || 0 }})
+              </button>
+              <button class="btn-post-action btn-comment" (click)="onCommentPlaceholder()">
+                <i class="far fa-comment"></i> Yorum Yap
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="side-info">
+      <div class="info-card">
+        <h4>Yönetim</h4>
+        <div class="admin-item" *ngIf="club.president">
+          <div class="admin-icon"><i class="fas fa-crown"></i></div>
+          <div class="admin-name">
+            <small>Kulüp Başkanı</small>
+            <p>{{ club.president.fullName }}</p>
+          </div>
+        </div>
+        <div class="admin-item" *ngIf="!club.president">
+          <div class="admin-icon"><i class="fas fa-crown"></i></div>
+          <div class="admin-name">
+            <small>Kulüp Başkanı</small>
+            <p>Atanmamış</p>
+          </div>
+        </div>
+      </div>
+      <button routerLink="/clubs" class="btn-back">
+        <i class="fas fa-chevron-left"></i> Kulüplere Dön
+      </button>
+    </aside>
+  </div>
+</div>

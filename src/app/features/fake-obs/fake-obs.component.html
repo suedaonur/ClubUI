@@ -1,0 +1,55 @@
+<div class="sso-wrapper">
+  <div class="sso-top-bar">
+    <div class="container">
+      <i class="fas fa-lock"></i> 
+      <span>T.C. Üniversite Bilgi Sistemi - Güvenli Kimlik Doğrulama</span>
+    </div>
+  </div>
+
+  <div class="sso-content">
+    <div class="sso-card">
+      <div class="sso-header">
+        <div class="uni-logo">
+          <i class="fas fa-university"></i>
+        </div>
+        <h2>Öğrenci Bilgi Sistemi</h2>
+        <p>Giriş Yapmak İçin Numaranızı Doğrulayın</p>
+      </div>
+
+      <div class="sso-body">
+        <div class="warning-box">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>Bu alan sadece kayıtlı öğrenciler içindir. Yanlış giriş denemeleri kaydedilmektedir.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="stNum">Öğrenci Numarası</label>
+          <div class="input-container">
+            <i class="fas fa-id-card"></i>
+            <input 
+              type="text" 
+              id="stNum" 
+              name="studentNumber" 
+              [(ngModel)]="studentNumber" 
+              placeholder="Örn: 230260..."
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <button class="btn-verify" (click)="onVerify()" [disabled]="!studentNumber">
+          Sistemi Doğrula
+        </button>
+
+        <button class="btn-cancel" (click)="cancel()">
+          İptal Et ve Geri Dön
+        </button>
+      </div>
+
+      <div class="sso-footer">
+        <p>© 2024 Bilgi İşlem Daire Başkanlığı</p>
+        <p>Tüm Hakları Saklıdır.</p>
+      </div>
+    </div>
+  </div>
+</div>

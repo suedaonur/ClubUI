@@ -1,0 +1,62 @@
+<div class="home-container container">
+  
+  <div class="welcome-banner glass-card" *ngIf="authService.currentUser()">
+    <div class="banner-content">
+      <h1>Kampüs Hayatına Hoş Geldin, 
+        <span class="highlight-text">
+          {{ (authService.currentUser()?.fullName || '').split(' ')[0] }}
+        </span>! 🎓
+      </h1>
+      <p>Kulüplerden en güncel haberler ve kampüsün nabzı burada.</p>
+    </div>
+    <div class="banner-illustration">
+      <i class="fas fa-university"></i>
+    </div>
+  </div>
+
+  <div class="feed-section">
+    <div class="feed-header">
+      <h2 class="feed-title"><i class="fas fa-stream"></i> Kampüs Akışı</h2>
+    </div>
+
+    <div *ngIf="isLoading" class="status-box">
+      <i class="fas fa-spinner fa-spin fa-2x"></i>
+      <p>Postlar getiriliyor...</p>
+    </div>
+
+    <div class="feed-list" *ngIf="!isLoading">
+      <div class="post-card glass-card" *ngFor="let post of posts">
+        
+        <div class="post-header">
+          <div class="club-avatar">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="post-meta">
+            <h4>{{ post.clubName }}</h4>
+            <span class="post-date">{{ post.createdDate | date:'dd.MM.yyyy HH:mm' }}</span>
+          </div>
+        </div>
+
+        <div class="post-body">
+          <h3 class="post-title">{{ post.title }}</h3>
+          <p class="post-text">{{ post.content }}</p>
+        </div>
+
+        <div class="post-footer">
+          <button class="btn-action" (click)="onLikePost(post.id)">
+            <i class="far fa-thumbs-up"></i> Beğen ({{ post.voteScore || 0 }})
+          </button>
+          <button class="btn-action" (click)="onCommentPlaceholder()">
+            <i class="far fa-comment"></i> Yorum Yap
+          </button>
+        </div>
+        
+      </div>
+
+      <div *ngIf="posts.length === 0" class="status-box empty-box">
+        <i class="fas fa-box-open fa-3x"></i>
+        <p>Henüz bir gönderi paylaşılmamış.</p>
+      </div>
+    </div>
+  </div>
+</div>

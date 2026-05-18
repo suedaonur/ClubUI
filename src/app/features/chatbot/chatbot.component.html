@@ -1,0 +1,50 @@
+<div class="chatbot-container container">
+  <div class="glass-card chatbot-card">
+    <div class="chatbot-header">
+      <div class="header-icon">
+        <i class="fas fa-robot"></i>
+      </div>
+      <h2>Yönetmelik Asistanı</h2>
+      <p>Üniversite yönetmeliği hakkında aklınıza takılan soruları sorabilirsiniz.</p>
+    </div>
+
+    <div class="chat-area">
+      <div class="messages">
+        <!-- AI Response Area -->
+        <div class="message ai-message" *ngIf="answer">
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            <p>{{ answer }}</p>
+          </div>
+        </div>
+
+        <div class="status-box" *ngIf="isLoading">
+           <i class="fas fa-circle-notch fa-spin"></i>
+           <p>Asistan düşünüyor...</p>
+        </div>
+
+        <div class="error-box" *ngIf="error">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="chat-input" 
+            [(ngModel)]="question" 
+            (keyup.enter)="askQuestion()"
+            placeholder="Yönetmelik hakkında bir soru sorun... (Örn: Sınavlara itiraz süresi kaç gündür?)"
+            [disabled]="isLoading">
+          <button class="btn-send" (click)="askQuestion()" [disabled]="isLoading || !question.trim()">
+            <i class="fas fa-paper-plane"></i> Gönder
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

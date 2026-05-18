@@ -1,0 +1,129 @@
+<div class="admin-container container">
+  <div class="glass-card admin-card">
+    
+    <div class="admin-header">
+      <div class="header-icon"><i class="fas fa-bullhorn"></i></div>
+      <h2>Yeni Gönderi Oluştur</h2>
+      <p>Kulüp üyelerinize ve tüm kampüse sesinizi duyurun!</p>
+    </div>
+
+    <div *ngIf="myAdminClubs.length === 0" class="alert-box">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>Şu anda yönetici olduğunuz bir kulüp bulunmuyor. Post paylaşabilmek için bir kulübün başkanı olmalısınız.</p>
+    </div>
+
+    <div class="post-form" *ngIf="myAdminClubs.length > 0">
+      
+      <div class="form-group-row">
+        <div class="form-group flex-group">
+          <label>Hangi Kulüp Adına Paylaşılacak?</label>
+          <div class="input-wrapper">
+            <i class="fas fa-users icon-left"></i>
+            <select [(ngModel)]="newPost.clubId" class="form-control">
+              <option *ngFor="let club of myAdminClubs" [value]="club.clubId || club.id">
+                {{ club.clubName || club.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="button-group-side">
+          <button class="btn-manage-members" (click)="openMembersModal(newPost.clubId)">
+            <i class="fas fa-users-cog"></i> Üye Yetkilerini Yönet
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gönderi Başlığı</label>
+        <div class="input-wrapper">
+          <i class="fas fa-heading icon-left"></i>
+          <input type="text" [(ngModel)]="newPost.title" class="form-control" placeholder="Örn: Tanışma Toplantısına Davetlisiniz!">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gönderi İçeriği</label>
+        <textarea [(ngModel)]="newPost.content" class="form-control text-area" rows="6" placeholder="Etkinlik detaylarını, tarih ve saati buraya yazabilirsiniz..."></textarea>
+      </div>
+
+      <button class="btn-submit" (click)="onSubmitPost()" [disabled]="isSubmitting">
+        <i class="fas" [ngClass]="isSubmitting ? 'fa-spinner fa-spin' : 'fa-paper-plane'"></i>
+        {{ isSubmitting ? 'Paylaşılıyor...' : 'Kampüste Paylaş' }}
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Üye Yetki Yönetimi Modalı -->
+<div class="modal-overlay" *ngIf="showMembersModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3><i class="fas fa-users-cog"></i> Kulüp Üyeleri Yetki Yönetimi</h3>
+      <button class="btn-close-modal" (click)="closeMembersModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div *ngIf="isLoadingMembers" class="loader-inner">
+        <i class="fas fa-spinner fa-spin"></i> Üye listesi yükleniyor...
+      </div>
+      
+      <div *ngIf="!isLoadingMembers && membersList.length === 0" class="empty-notice-inner">
+        <i class="fas fa-user-slash"></i> Bu kulüpte henüz kayıtlı üye bulunmamaktadır.
+      </div>
+      
+      <div *ngIf="!isLoadingMembers && membersList.length > 0" class="table-responsive">
+        <table class="members-table">
+          <thead>
+            <tr>
+              <th>Üye Adı Soyadı</th>
+              <th class="text-center">Yönetici (IsAdmin)</th>
+              <th class="text-center">Paylaşım Yapabilir (IsWriteable)</th>
+              <th class="text-center">Üye Silebilir (IsRemoveableMember)</th>
+              <th class="text-right">İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let member of membersList">
+              <td class="member-info">
+                <div class="avatar-small">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <p class="name">{{ member.student?.fullName }}</p>
+                  <p class="subtext">No: {{ member.student?.studentNumber }}</p>
+                </div>
+              </td>
+              <td class="text-center">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="member.isAdmin">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="member.isWriteable">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="member.isRemoveableMember">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td class="text-right">
+                <button class="btn-save-member" (click)="onUpdatePermissions(member)">
+                  <i class="fas fa-save"></i> Güncelle
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

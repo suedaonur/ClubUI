@@ -1,0 +1,155 @@
+/* Sayfayı tamamen kaplayan ana kapsayıcı */
+.sso-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e9ecef;
+  z-index: 9999; /* Navbar'ın üstüne çıkması için */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.sso-top-bar {
+  background-color: #003366;
+  color: white;
+  padding: 10px 0;
+  font-size: 13px;
+  text-align: center;
+  border-bottom: 3px solid #ffcc00; /* Klasik üniversite sarısı */
+}
+
+.sso-top-bar i {
+  margin-right: 8px;
+}
+
+.sso-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sso-card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 30px;
+  border: 1px solid #dee2e6;
+}
+
+.uni-logo {
+  font-size: 50px;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sso-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.sso-header h2 {
+  color: #333;
+  font-size: 22px;
+  margin: 0;
+}
+
+.sso-header p {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.warning-box {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ffeeba;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #495057;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #adb5bd;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.btn-verify {
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+.btn-verify:hover:not(:disabled) {
+  background-color: #002244;
+}
+
+.btn-verify:disabled {
+  background-color: #6c757d;
+  opacity: 0.6;
+}
+
+.btn-cancel {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #dc3545;
+  margin-top: 15px;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sso-footer {
+  margin-top: 30px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.sso-footer p {
+  font-size: 11px;
+  color: #adb5bd;
+  margin: 2px 0;
+}

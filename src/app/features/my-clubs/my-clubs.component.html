@@ -1,0 +1,49 @@
+<div class="page-container">
+  <div class="page-header">
+    <h2><i class="fas fa-id-badge"></i> Üye Olduğum Kulüpler</h2>
+    <p>Aktif olarak yer aldığın kulüpler ve üstlendiğin roller</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state">
+    <i class="fas fa-circle-notch fa-spin"></i>
+    <p>Kulüplerin getiriliyor...</p>
+  </div>
+
+  <div *ngIf="!isLoading && myClubs.length > 0" class="clubs-grid">
+    <div class="club-card" *ngFor="let club of myClubs">
+      
+      <div class="card-header">
+        <div class="club-icon"><i class="fas fa-users"></i></div>
+        <h3>{{ club.clubName || club.ClubName || club.name }}</h3> 
+      </div>
+
+      <div class="card-body">
+        <div class="role-badge" [ngClass]="{'president': club.isAdmin || club.IsAdmin}">
+          <i class="fas" [ngClass]="(club.isAdmin || club.IsAdmin) ? 'fa-crown' : 'fa-user'"></i>
+          {{ (club.isAdmin || club.IsAdmin) ? 'Kulüp Yöneticisi' : 'Üye' }}
+        </div>
+      </div>
+
+      <div class="card-footer" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a [routerLink]="['/clubs', club.clubId || club.ClubId || club.id]" 
+           class="btn-go-detail" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">
+          Sayfaya Git <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <a *ngIf="club.isAdmin || club.IsAdmin" 
+           [routerLink]="['/admin/club', club.clubId || club.ClubId || club.id]" 
+           class="btn-go-admin" style="flex: 1; text-align: center; justify-content: center; min-width: 120px; margin-left: 0;">
+          Kulübü Yönet <i class="fas fa-cog"></i>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && myClubs.length === 0" class="empty-state">
+    <div class="empty-icon"><i class="fas fa-search"></i></div>
+    <h3>Henüz bir kulübe üye değilsin</h3>
+    <p>Üniversitendeki aktif kulüpleri keşfet ve sosyalleşmeye başla!</p>
+    <a routerLink="/clubs" class="btn-discover">Kulüpleri Keşfet</a>
+  </div>
+</div>

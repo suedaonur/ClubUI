@@ -1,0 +1,34 @@
+.page-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.page-header { margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
+.page-header h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.page-header h2 i { color: #2563eb; }
+.page-header p { color: #64748b; font-size: 1rem; }
+
+.loading-state { text-align: center; padding: 60px 0; color: #2563eb; font-size: 1.2rem; }
+.loading-state i { font-size: 2.5rem; margin-bottom: 15px; }
+
+.clubs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+.club-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); border: 1px solid #f1f5f9; transition: all 0.3s ease; display: flex; flex-direction: column; }
+.club-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1); border-color: #bfdbfe; }
+
+.card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.club-icon { width: 50px; height: 50px; background: #eff6ff; color: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.card-header h3 { color: #1e293b; font-size: 1.2rem; margin: 0; line-height: 1.3; }
+
+.card-body { flex-grow: 1; margin-bottom: 20px; }
+.role-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; background: #f1f5f9; color: #475569; }
+.role-badge.president { background: #fef3c7; color: #d97706; }
+
+.card-footer { border-top: 1px solid #f1f5f9; padding-top: 20px; }
+.btn-go-detail { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; background: #f8fafc; color: #2563eb; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.2s; }
+.btn-go-detail:hover { background: #2563eb; color: white; }
+
+.btn-go-admin { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px; background: #fffbeb; color: #d97706; text-decoration: none; border-radius: 10px; font-weight: 700; transition: all 0.2s; border: 1px solid #fde68a; }
+.btn-go-admin:hover { background: #d97706; color: white; }
+
+.empty-state { text-align: center; background: white; border-radius: 20px; padding: 60px 20px; border: 2px dashed #cbd5e1; }
+.empty-icon { width: 80px; height: 80px; background: #f1f5f9; color: #94a3b8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px; }
+.empty-state h3 { color: #334155; font-size: 1.5rem; margin-bottom: 10px; }
+.empty-state p { color: #64748b; margin-bottom: 25px; max-width: 400px; margin-left: auto; margin-right: auto; }
+.btn-discover { display: inline-block; background: #2563eb; color: white; padding: 12px 28px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.btn-discover:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }

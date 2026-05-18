@@ -1,0 +1,200 @@
+/* Ana Kapsayıcı (Buzlu Cam Efekti) */
+.modern-navbar {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 75px;
+}
+
+/* Logo Tasarımı */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.brand-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+/* Menü Linkleri */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-links > a {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-links > a i {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Link Hover & Active Durumu */
+.navbar-links > a:hover {
+  background-color: #f1f5f9;
+  color: #2563eb;
+}
+
+.navbar-links > a:hover i {
+  color: #2563eb;
+}
+
+.navbar-links > a.active {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.navbar-links > a.active i {
+  color: #2563eb;
+}
+
+/* Giriş Yap Butonu */
+.btn-login-modern {
+  background: #2563eb !important;
+  color: white !important;
+  padding: 10px 24px !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+  margin-left: 10px;
+}
+
+.btn-login-modern i {
+  color: white !important;
+}
+
+.btn-login-modern:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Profil Alanı */
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 15px;
+  padding-left: 20px;
+  border-left: 2px solid #e2e8f0;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 6px 16px 6px 6px;
+  background: #f8fafc;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s;
+}
+
+.user-badge:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.user-name {
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Çıkış Yap Butonu */
+.btn-logout-modern {
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.btn-logout-modern:hover {
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  transform: rotate(10deg);
+}
+
+/* Yeni Kulüp Kur Nav Button styling */
+.create-club-nav-btn {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.create-club-nav-btn i {
+  color: white !important;
+}
+
+.create-club-nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}

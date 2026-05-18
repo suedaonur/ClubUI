@@ -1,0 +1,38 @@
+<div class="create-club-container container">
+  <div class="glass-card create-card">
+    
+    <div class="create-header">
+      <div class="header-icon"><i class="fas fa-plus-circle"></i></div>
+      <h2>Yeni Kulüp Kur</h2>
+      <p>Üniversitenizde yeni bir topluluk başlatın, insanları bir araya getirin!</p>
+    </div>
+
+    <div class="create-form">
+      
+      <div class="form-group">
+        <label>Kulüp Adı</label>
+        <div class="input-wrapper">
+          <i class="fas fa-users icon-left"></i>
+          <input type="text" [(ngModel)]="clubData.name" class="form-control" placeholder="Örn: Yapay Zeka ve Robotik Topluluğu">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Kulüp Açıklaması</label>
+        <textarea [(ngModel)]="clubData.description" class="form-control text-area" rows="6" placeholder="Kulübün amacını, yapacağı faaliyetleri ve misyonunu detaylıca buraya yazabilirsiniz..."></textarea>
+      </div>
+
+      <div class="button-actions">
+        <button routerLink="/clubs" class="btn-cancel">
+          <i class="fas fa-arrow-left"></i> İptal Et
+        </button>
+        <button class="btn-submit" (click)="onSubmit()" [disabled]="isSubmitting">
+          <i class="fas" [ngClass]="isSubmitting ? 'fa-spinner fa-spin' : 'fa-check'"></i>
+          {{ isSubmitting ? 'Oluşturuluyor...' : 'Kulübü Kur' }}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

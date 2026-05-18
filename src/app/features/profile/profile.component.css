@@ -1,0 +1,42 @@
+.profile-wrapper { display: grid; grid-template-columns: 340px 1fr; gap: 30px; margin-top: 40px; padding-bottom: 50px; align-items: start; }
+.glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 24px; box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05); }
+
+.user-main-card { padding: 40px 30px; text-align: center; }
+.avatar-wrapper { position: relative; width: 110px; height: 110px; margin: 0 auto 20px; }
+.avatar-main { width: 100%; height: 100%; background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+.online-status { position: absolute; bottom: 5px; right: 5px; width: 20px; height: 20px; background: #22c55e; border: 4px solid white; border-radius: 50%; }
+
+.user-display-name { color: #1e293b; font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; }
+.user-role-badge { display: inline-block; background: #f0f9ff; color: #0369a1; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; }
+.user-quick-info { text-align: left; margin-bottom: 30px; }
+.info-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(226, 232, 240, 0.5); color: #64748b; font-size: 0.9rem; }
+.info-row i { color: #2563eb; width: 20px; }
+
+.btn-logout-danger { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #fee2e2; background: #fef2f2; color: #ef4444; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+.btn-logout-danger:hover { background: #ef4444; color: white; }
+
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.section-title { color: #1e293b; font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+.section-title i { color: #2563eb; }
+.count-badge { background: #1e293b; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
+
+.memberships-grid { display: flex; flex-direction: column; gap: 15px; }
+.club-item-card { display: flex; align-items: center; padding: 20px 25px; transition: all 0.3s ease; }
+.club-item-card:hover { transform: translateX(10px); border-color: #bfdbfe; background: white; }
+
+.club-item-icon { width: 50px; height: 50px; background: #eff6ff; color: #2563eb; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-right: 20px; }
+.club-item-info { flex-grow: 1; }
+.club-item-info h4 { margin: 0 0 5px 0; color: #1e293b; font-size: 1.15rem; }
+
+.role-pill { display: inline-flex; align-items: center; gap: 6px; background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; }
+.role-pill.president { background: #fffbeb; color: #d97706; }
+
+.btn-arrow { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #cbd5e1; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+.club-item-card:hover .btn-arrow { color: #2563eb; }
+
+.btn-admin-arrow { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #d97706; background: #fffbeb; border-radius: 10px; text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+.btn-admin-arrow:hover { background: #d97706; color: white; }
+
+.empty-state-card { padding: 60px 20px; text-align: center; }
+.empty-icon-circle { width: 80px; height: 80px; background: #f8fafc; color: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px; }
+.btn-explore-now { margin-top: 20px; background: #2563eb; color: white; border: none; padding: 12px 30px; border-radius: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
